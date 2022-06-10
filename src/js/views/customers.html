@@ -1,0 +1,27 @@
+<!--
+ Copyright (c) 2014, 2022, Oracle and/or its affiliates.
+ Licensed under The Universal Permissive License (UPL), Version 1.0
+ as shown at https://oss.oracle.com/licenses/upl/
+ -->
+<div class="oj-hybrid-padding">
+  <h1>Customer Form</h1>
+  <oj-form-layout id="formLayoutOptions" max-columns="1" direction="row" user-assistance-density="compact">
+
+    <oj-input-text id="text-input" value={{userInput}} label-hint="Input email" label-edge="inside"></oj-input-text>
+    <oj-input-text id="text-input" value={{firstName}} label-hint="First name" label-edge="inside"></oj-input-text>
+    <oj-input-text id="text-input" value={{lastName}} label-hint="Last name" label-edge="inside"></oj-input-text>
+    <oj-input-number id="text-input" value={{userAge}} label-hint="Input age" label-edge="inside"></oj-input-number>
+  </oj-form-layout>
+  <button data-bind="click:userAgeChaned">Show User Info</button>
+
+  <br>
+  <br>
+  <div data-bind="visible:showUserInfo">
+    <p>Hello
+      <oj-bind-text value="[[fullName]]"></oj-bind-text>
+      !</span>
+    <p>Your Age is
+      <oj-bind-text value="[[userAge]]"></oj-bind-text>
+    </p>
+  </div>
+ 
