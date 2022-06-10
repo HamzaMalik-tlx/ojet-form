@@ -2,15 +2,18 @@
  Copyright (c) 2014, 2022, Oracle and/or its affiliates.
  Licensed under The Universal Permissive License (UPL), Version 1.0
  as shown at https://oss.oracle.com/licenses/upl/
+
+ hello
  -->
 <div class="oj-hybrid-padding">
   <h1>Customer Form</h1>
-  <oj-form-layout id="formLayoutOptions" max-columns="1" direction="row" user-assistance-density="compact">
+  <oj-form-layout id="formLayoutOptions" max-columns="3" direction="row" user-assistance-density="compact">
 
-    <oj-input-text id="text-input" value={{userInput}} label-hint="Input email" label-edge="inside"></oj-input-text>
-    <oj-input-text id="text-input" value={{firstName}} label-hint="First name" label-edge="inside"></oj-input-text>
-    <oj-input-text id="text-input" value={{lastName}} label-hint="Last name" label-edge="inside"></oj-input-text>
-    <oj-input-number id="text-input" value={{userAge}} label-hint="Input age" label-edge="inside"></oj-input-number>
+    <oj-input-text id="text-input" value={{userInput}} length.max="30"
+    user-assistance-density="efficient"  label-hint="Input email" label-edge="inside"></oj-input-text>
+    <oj-input-text id="text-input" user-assistance-density="efficient"  value={{firstName}} length.max="10" label-hint="First name" label-edge="inside"></oj-input-text>
+    <oj-input-text id="text-input" user-assistance-density="efficient"  value={{lastName}}  length.max="10"  label-hint="Last name" label-edge="inside"></oj-input-text>
+    <oj-input-number id="text-input" user-assistance-density="efficient"  value={{userAge}} max="100" min="10" label-hint="Input age" label-edge="inside"></oj-input-number>
   </oj-form-layout>
   <button data-bind="click:userAgeChaned">Show User Info</button>
 
@@ -24,4 +27,4 @@
       <oj-bind-text value="[[userAge]]"></oj-bind-text>
     </p>
   </div>
- 
+  
