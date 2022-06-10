@@ -17,31 +17,8 @@ define([
   "ojs/ojformlayout",
 ], function (accUtils, ko) {
   function CustomerViewModel() {
-    this.userInput = ko.observable("m.hamza@techlogix.com");
-    this.firstName = ko.observable("Hamza");
-    this.lastName = ko.observable("Malik");
-    this.userAge = ko.observable(0);
- 
-    this.fullName=ko.computed(
-
-      function(){
-
-        return this.firstName() + " " + this.lastName();
-      },this
-    );
-
-    
-    this.showUserInfo = ko.observable(false);
-
-    this.userAgeChaned = function () {
-      if (this.showUserInfo() == true) {
-        this.showUserInfo(false);
-      } else {
-        this.showUserInfo(true);
-      }
-      console.log("this.showUserInfo");
-      console.log(this.showUserInfo());
-    }.bind(this);
+    // function to initialize all observables
+    this._initAllObverables();
 
     this.connected = () => {
       accUtils.announce("Customers page loaded.", "assertive");
@@ -64,6 +41,24 @@ define([
       // Implement if needed
     };
   }
+
+  CustomerViewModel.prototype._initAllObverables = function () {
+    this.userInput = ko.observable("m.hamza@techlogix.com");
+    this.firstName = ko.observable("Hamza");
+    this.lastName = ko.observable("Malik");
+    this.userAge = ko.observable(10);
+
+    this.fullName = ko.computed(function () {
+      return this.firstName() + " " + this.lastName();
+    }, this);
+
+    this.showUserInfo = ko.observable(false);
+
+    this.userAgeChaned = function () {
+      this.showUserInfo(!this.showUserInfo());
+
+    }.bind(this);
+  };
 
   /*
    * Returns an instance of the ViewModel providing one instance of the ViewModel. If needed,
